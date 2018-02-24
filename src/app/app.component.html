@@ -5,7 +5,7 @@
       <h5 class="mt-0 mb-1">{{p.nom}}</h5>
       <div>{{p.label}}</div>
       <p>Pour le prix de {{p.prix}} €</p>
-      <p><a routerLink='{{i+1}}'>En savoir plus</a></p>
+      <a  [routerLink]="['/Produit',i]">En savoir plus</a>
     </div>
   </li>
 
