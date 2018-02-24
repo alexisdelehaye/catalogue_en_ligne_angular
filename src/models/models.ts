@@ -1,0 +1,2 @@
+export {Produit} from './Produit';
+
