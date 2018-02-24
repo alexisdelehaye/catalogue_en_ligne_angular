@@ -1,9 +1,7 @@
 import {Produit} from '../../models/Produit';
 import { Component } from '@angular/core';
-
-
 import {ActivatedRoute} from '@angular/router';
-
+import {NgModule} from '@angular/core';
 
 @Component({
   selector : 'app-root',
