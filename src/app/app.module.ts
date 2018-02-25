@@ -17,6 +17,7 @@ const routes: Routes = [
     path: 'produit/:id',
     component: ProduitComponent
   },
+  {path : 'home', component : AccueilComponent}
 ];
 
  const routing = RouterModule.forRoot(routes, {

@@ -1,7 +1,5 @@
 
 import { Component } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Router} from '@angular/router';
 import {Produit} from '../models/Produit';
 
 @Component({
