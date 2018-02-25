@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {Produit} from '../models/Produit';
+import {Panier} from '../models/Panier';
+import {PanierComponent} from '../panier/panier.component';
 
 @Component({
   selector : 'app-produit',
@@ -13,7 +15,7 @@ import {Produit} from '../models/Produit';
       <h5 class="card-title">{{model.nom}}</h5>
       <p class="card-text">{{model.description}}</p>
       <p class="card-texte">{{model.prix}} €</p>
-      <p class="btn btn-primary">Ajouter au panier</p>
+      <button (click)="AjouterPanier(model)"class="btn btn-primary">Ajouter au panier</button>
     </div>
   </div>
 
@@ -23,6 +25,7 @@ import {Produit} from '../models/Produit';
 
 export class ProduitComponent {
   public model: Produit;
+  public panierProd: PanierComponent;
 
   public listeProduit: Produit[] = [
     new Produit('sacoche', 'sacoche en cuir', ' c\'est une sacoche en cuir cher !', 4000),
@@ -37,4 +40,11 @@ export class ProduitComponent {
 
     this.model = this.listeProduit[myId];
   }
+
+
+  AjouterPanier(model) {
+    this.panierProd.panier.listeArticle.push(model);
+    this.panierProd.panier.prixTot += model.prix;
+    this.panierProd.panier.nombreArt++;
+}
 }

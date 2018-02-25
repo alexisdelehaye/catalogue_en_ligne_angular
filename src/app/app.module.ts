@@ -9,10 +9,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
 import {ProduitComponent} from './produit/produit.component';
 import {AccueilComponent} from './accueil/accueil.component';
+import {PanierComponent} from './panier/panier.component';
 
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
+  {path : 'panier', component: PanierComponent},
   {
     path: 'produit/:id',
     component: ProduitComponent
@@ -30,7 +32,7 @@ const routes: Routes = [
     routes,
     { enableTracing: true } // <-- debugging purposes only
   )  ],
-  declarations: [ AppComponent, ProduitComponent, AccueilComponent ],
+  declarations: [ AppComponent, ProduitComponent, AccueilComponent, PanierComponent ],
   bootstrap:    [ AppComponent],
   providers: [{provide: APP_BASE_HREF, useValue : '' }]
 })
