@@ -1,0 +1,12 @@
+<ul class="list-unstyled">
+  <li class="media" *ngFor="let p of listeProduit; let i=index">
+    <img class="mr-3" src="http://lorempixel.com/100/100/" alt="Generic placeholder image">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">{{p.nom}}</h5>
+      <div>{{p.label}}</div>
+      <p>Pour le prix de {{p.prix}} €</p>
+      <a  [routerLink]="['/produit',i]"  routerLinkActive="active">En savoir plus</a>
+    </div>
+  </li>
+
+</ul>
