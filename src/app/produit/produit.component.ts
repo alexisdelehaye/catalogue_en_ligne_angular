@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {Produit} from '../models/Produit';
@@ -25,12 +25,13 @@ import {PanierComponent} from '../panier/panier.component';
 
 export class ProduitComponent {
   public model: Produit;
-  public panierProd: PanierComponent;
+  public panierFinal: PanierComponent = new PanierComponent();
 
   public listeProduit: Produit[] = [
     new Produit('sacoche', 'sacoche en cuir', ' c\'est une sacoche en cuir cher !', 4000),
     new Produit(' pantalon', 'pantalon noir ', ' c\'est un beau pantalon noir', 20)
   ];
+
 
   constructor(private route: ActivatedRoute) {
     let myId = '';
@@ -40,11 +41,6 @@ export class ProduitComponent {
 
     this.model = this.listeProduit[myId];
   }
-
-
-  AjouterPanier(model) {
-    this.panierProd.panier.listeArticle.push(model);
-    this.panierProd.panier.prixTot += model.prix;
-    this.panierProd.panier.nombreArt++;
-}
+  AjouterPanier(model: Produit) {
+    }
 }

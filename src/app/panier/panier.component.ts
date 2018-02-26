@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Produit} from '../models/Produit';
 import {Panier} from '../models/Panier';
-import {selector} from 'rxjs/operator/publish';
+import {ActivatedRoute} from '@angular/router';
+import {ProduitComponent} from '../produit/produit.component';
 
 
 @Component({
@@ -11,7 +12,21 @@ import {selector} from 'rxjs/operator/publish';
 })
 
 export class PanierComponent {
-  public panier: Panier;
+  @Input() childMessage: Produit;
+  public listeArticle: Produit[] = [new Produit('test', '', '', 0),
+    new Produit(' tshirt blanc', 'pantalon noir ', ' c\'est un beau pantalon noir', 9),
+  ];
+  public panier: Panier = new Panier(this.listeArticle, 0, 0);
+  private achat: Produit;
 
-
+  receiveMessage($event) {
+    this.achat = $event;
+    this.listeArticle.push(this.achat);
+  }
 }
+
+
+
+
+
+
