@@ -1,14 +1,6 @@
 ///<reference path="../produit/produit.component.ts"/>
 import {Component, Inject, Input, NgModule, OnInit} from '@angular/core';
 import {Produit} from '../models/Produit';
-import {Panier} from '../models/Panier';
-import {ProduitService} from '../produit.service';
-import {ActivatedRoute} from '@angular/router';
-import {ProduitComponent} from '../produit/produit.component';
-import {nextTick} from 'q';
-import {getParentState} from '@angular/core/src/render3/node_manipulation';
-import {AccueilComponent} from '../accueil/accueil.component';
-import { PersistenceService } from 'angular-persistence';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 
@@ -22,12 +14,17 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 
 export class PanierComponent {
-  private entree: Produit[];
-  testProd: Produit;
+  public PrixTotal = 0;
   listeProduit: Produit[];
+  public randomPage  = Math.round(Math.random());
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {
+    this.storage.set('PrixTotal', this.PrixTotal);
     this.listeProduit = this.storage.get('PanierFinal');
+    for (const produit of this.listeProduit) {
+      this.PrixTotal += produit.prix;
+    }
+    this.storage.set('PrixTotal', this.PrixTotal);
     /*
     for (let i = 0; i < this.storage.get('indice') + 1; i++) {
       if (this.storage.get(i.toString()) != null) {
@@ -36,6 +33,7 @@ export class PanierComponent {
     }
 */
   }
+
 
 }
 

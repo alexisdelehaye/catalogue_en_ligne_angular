@@ -10,6 +10,8 @@ import {ProduitComponent} from './produit/produit.component';
 import {AccueilComponent} from './accueil/accueil.component';
 import {PanierComponent} from './panier/panier.component';
 import { ProduitService } from './produit.service';
+import { PaiementSucessComponent} from './paiement/paiementSucess/paiementSucess.component';
+import {PaiementFailComponent} from './paiement/paiementFail/paiementFail.component';
 
 
  const routes: Routes = [
@@ -22,6 +24,14 @@ import { ProduitService } from './produit.service';
    {
      path : 'panier/:id',
      component : PanierComponent
+   },
+   {
+     path : 'Commande/0',
+     component : PaiementFailComponent
+   },
+   {
+     path : 'Commande/1',
+     component : PaiementSucessComponent
    },
   {path : 'home', component : AccueilComponent}
 ];
@@ -37,7 +47,7 @@ import { ProduitService } from './produit.service';
     routes,
     { enableTracing: true } // <-- debugging purposes only
   ) , RouterModule.forChild(routes) , StorageServiceModule],
-  declarations: [ AppComponent, ProduitComponent, AccueilComponent, PanierComponent ],
+  declarations: [ AppComponent, ProduitComponent, AccueilComponent, PanierComponent, PaiementFailComponent, PaiementSucessComponent],
   bootstrap:    [ AppComponent],
   providers: [{provide: APP_BASE_HREF, useValue : ''}, ProduitService ]
 })

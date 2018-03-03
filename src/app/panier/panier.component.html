@@ -1,6 +1,13 @@
+ <h2> Voici le contenu de votre panier </h2>
  <ul class="list-group">
     <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let achat of listeProduit;">
-      {{achat.nom}}
+      nom : {{achat.nom}}
+      <span> description : {{achat.label}}</span>
       <span class="badge badge-primary badge-pill">{{achat.prix}} €</span>
     </li>
   </ul>
+
+<div class="alert alert-primary" role="alert">
+  Prix total de votre Panier  {{PrixTotal}} € <a [routerLink]="['/Commande',randomPage]" >Effectuer votre commande </a>
+</div>
+
