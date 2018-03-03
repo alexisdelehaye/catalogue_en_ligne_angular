@@ -10,6 +10,7 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 })
 
 export class  AccueilComponent {
+  private sortiePanier: Produit[];
   private indice = this.storage.set('indice', this.storage.get('indice'));
 
   private PanierVide: Produit[] = [
@@ -19,7 +20,10 @@ export class  AccueilComponent {
   public listeProduit: Produit[] = [
     new Produit('sacoche', 'sacoche en cuir', ' c\'est une sacoche en cuir cher !', 4000),
     new Produit(' pantalon', 'pantalon noir ', ' c\'est un beau pantalon noir', 20),
-    new Produit('test', 'test', 'test', 1)
+    new Produit('test', 'test', 'test', 1),
+    new Produit('Inter postulatus', 'Inter postulatus nullo postulatus solitudine', 'Cum ergo Romae est ardore', 50),
+    new Produit('Praefecto omnibus omnibus sint praefecto.', 'Ultra prudens aeternam nobilem intentum', 'Cum ergo Romae est ardore', 25),
+
   ];
 
   public listePanier: Produit[] = [
@@ -33,4 +37,11 @@ constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {
 
 }
 
+
+  public sendData(model: Produit) {
+    this.sortiePanier = this.storage.get('PanierFinal');
+    this.sortiePanier.push(model);
+    this.storage.set('PanierFinal', this.sortiePanier);
+
+  }
 }
