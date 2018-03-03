@@ -1,8 +1,6 @@
-<app-produit (messageEvent)="receiveMessage($event)"> </app-produit>
-<ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let achat of panier.listeArticle;">
-    {{achat.nom}}
-    <span class="badge badge-primary badge-pill">{{achat.prix}} €</span>
-  </li>
-</ul>
-
+ <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let achat of listeProduit;">
+      {{achat.nom}}
+      <span class="badge badge-primary badge-pill">{{achat.prix}} €</span>
+    </li>
+  </ul>

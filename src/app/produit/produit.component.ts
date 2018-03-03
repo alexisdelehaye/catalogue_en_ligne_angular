@@ -1,46 +1,76 @@
 
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {Component, Input, Output, EventEmitter, Inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {Produit} from '../models/Produit';
 import {Panier} from '../models/Panier';
 import {PanierComponent} from '../panier/panier.component';
+import {ProduitService} from '../produit.service';
+import {AccueilComponent} from '../accueil/accueil.component';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 @Component({
   selector : 'app-produit',
-  template : `
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="http://lorempixel.com/250/250/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{model.nom}}</h5>
-      <p class="card-text">{{model.description}}</p>
-      <p class="card-texte">{{model.prix}} €</p>
-      <button (click)="AjouterPanier(model)"class="btn btn-primary">Ajouter au panier</button>
-    </div>
-  </div>
-
-  `,
-  styleUrls: [ './produit.component.css' ]
+  templateUrl : './produit.component.html',
+  styleUrls: [ './produit.component.css' ],
+  providers : [ProduitService, ]
 })
+
+@NgModule({
+  imports : [],
+  declarations : [PanierComponent],
+  providers: []
+
+})
+
 
 export class ProduitComponent {
   public model: Produit;
-  public panierFinal: PanierComponent = new PanierComponent();
+  private sortiePanier: Produit[];
+  private indexModel: string;
+  private indice: number;
+
+
 
   public listeProduit: Produit[] = [
     new Produit('sacoche', 'sacoche en cuir', ' c\'est une sacoche en cuir cher !', 4000),
-    new Produit(' pantalon', 'pantalon noir ', ' c\'est un beau pantalon noir', 20)
+    new Produit(' pantalon', 'pantalon noir ', ' c\'est un beau pantalon noir', 20),
+    new Produit('test', 'test', 'test', 1)
   ];
 
 
-  constructor(private route: ActivatedRoute) {
+
+
+  constructor(private route: ActivatedRoute, @Inject(LOCAL_STORAGE) private storage: WebStorageService ) {
+    this.sortiePanier = this.storage.get('PanierFinal');
+
     let myId = '';
     this.route.params.subscribe(params => {
       myId = params['id'];
     });
 
     this.model = this.listeProduit[myId];
+    this.indexModel =  myId;
   }
-  AjouterPanier(model: Produit) {
+
+  public sendData(model: Produit) {
+    this.indice = this.storage.get('indice');
+    while (this.storage.get(this.indice.toString()) != null) {
+      this.indice++;
     }
+    this.sortiePanier.push(model);
+    this.storage.set(this.indice.toString(), model);
+    this.storage.set('indice', this.indice);
+
+
+  }
 }
+
+
+
+
+
+
+
+
+
