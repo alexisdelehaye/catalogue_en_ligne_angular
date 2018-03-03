@@ -27,7 +27,9 @@ export class  AccueilComponent {
   ];
 constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {
   this.indice = this.storage.get('indice');
-  this.storage.set('PanierFinal', this.PanierVide);
+  if ( this.storage.get('PanierFinal') == null) {
+    this.storage.set('PanierFinal', this.PanierVide);
+  }
 
 }
 

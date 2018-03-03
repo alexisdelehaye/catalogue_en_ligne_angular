@@ -28,12 +28,13 @@ export class PanierComponent {
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {
     this.listeProduit = this.storage.get('PanierFinal');
+    /*
     for (let i = 0; i < this.storage.get('indice') + 1; i++) {
       if (this.storage.get(i.toString()) != null) {
         this.listeProduit.push(this.storage.get(i.toString()));
       }
     }
-
+*/
   }
 
 }

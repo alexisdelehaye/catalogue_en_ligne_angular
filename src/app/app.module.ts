@@ -41,6 +41,9 @@ import { ProduitService } from './produit.service';
   bootstrap:    [ AppComponent],
   providers: [{provide: APP_BASE_HREF, useValue : ''}, ProduitService ]
 })
-export class AppModule {}
+export class AppModule {
+
+
+}
 
 

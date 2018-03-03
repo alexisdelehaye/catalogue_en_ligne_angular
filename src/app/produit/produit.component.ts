@@ -42,7 +42,6 @@ export class ProduitComponent {
 
 
   constructor(private route: ActivatedRoute, @Inject(LOCAL_STORAGE) private storage: WebStorageService ) {
-    this.sortiePanier = this.storage.get('PanierFinal');
 
     let myId = '';
     this.route.params.subscribe(params => {
@@ -54,6 +53,7 @@ export class ProduitComponent {
   }
 
   public sendData(model: Produit) {
+    /*
     this.indice = this.storage.get('indice');
     while (this.storage.get(this.indice.toString()) != null) {
       this.indice++;
@@ -61,6 +61,10 @@ export class ProduitComponent {
     this.sortiePanier.push(model);
     this.storage.set(this.indice.toString(), model);
     this.storage.set('indice', this.indice);
+    */
+    this.sortiePanier = this.storage.get('PanierFinal');
+    this.sortiePanier.push(model);
+    this.storage.set('PanierFinal', this.sortiePanier);
 
 
   }
