@@ -16,6 +16,7 @@ import {AuthComponent} from './auth/auth.component';
 import {AuthenticationService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard';
 import {FormsModule} from '@angular/forms';
+import {AjoutProduitComponent} from './AjoutProduit/AjoutProduit.component';
 
 
  const routes: Routes = [
@@ -42,6 +43,10 @@ import {FormsModule} from '@angular/forms';
    {
      path : 'connexion',
      component : AuthComponent,
+   },
+   {
+     path : 'CreationProduit',
+     component : AjoutProduitComponent,
    }
 ];
 
@@ -56,7 +61,7 @@ import {FormsModule} from '@angular/forms';
     routes,
     { enableTracing: true } // <-- debugging purposes only
   ) , RouterModule.forChild(routes) , StorageServiceModule, FormsModule],
-  declarations: [ AppComponent, ProduitComponent, AccueilComponent, PanierComponent, PaiementFailComponent, PaiementSucessComponent, AuthComponent],
+  declarations: [ AppComponent, ProduitComponent, AccueilComponent, PanierComponent, PaiementFailComponent, PaiementSucessComponent, AuthComponent, AjoutProduitComponent],
   bootstrap:    [ AppComponent],
   providers: [{provide: APP_BASE_HREF, useValue : ''}, ProduitService, AuthenticationService,
     AuthGuard ]

@@ -2,6 +2,8 @@
 import {Component, Inject} from '@angular/core';
 import {Produit} from '../models/Produit';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import {AuthenticationService} from '../auth/auth.service';
+import {AuthGuard} from '../auth/auth-guard';
 
 @Component({
   selector : 'app-accueil',
@@ -29,7 +31,12 @@ export class  AccueilComponent {
   public listePanier: Produit[] = [
     new Produit('produit de l\'accueil', 'test accueil', 'test', 25),
   ];
-constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {
+constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private authService: AuthenticationService,
+            private authGuard: AuthGuard) {
+  if (this.storage.get('Catalogue') == null) {
+    this.storage.set('Catalogue', this.listeProduit);
+  }
+  this.listeProduit = this.storage.get('Catalogue');
   this.indice = this.storage.get('indice');
   if ( this.storage.get('PanierFinal') == null) {
     this.storage.set('PanierFinal', this.PanierVide);
@@ -37,6 +44,14 @@ constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {
 
 }
 
+  isConnected() {
+    return this.authGuard.isConnected();
+  }
+
+  logout() {
+    this.authService.logout();
+    window.location.reload();
+  }
 
   public sendData(model: Produit) {
     this.sortiePanier = this.storage.get('PanierFinal');
