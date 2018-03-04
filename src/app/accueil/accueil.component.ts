@@ -54,9 +54,9 @@ constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private a
   }
   public supprimerProduit(i: number) {
     this.listeProduit = this.storage.get('Catalogue');
-    this.listeProduit.splice(i);
+    this.listeProduit.slice(i);
     this.storage.set('Catalogue', this.listeProduit);
-    //this.router.navigate(['/home']);
+    this.router.navigate(['/home']);
 
   }
 }
