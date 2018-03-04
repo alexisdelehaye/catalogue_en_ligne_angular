@@ -22,7 +22,7 @@ export class AppComponent {
     if (newRoute == 'panier') this.router.navigateByUrl('/panier', { skipLocationChange: false });
   }
 
-  isConnected(){
+  isConnected() {
     return this.authGuard.isConnected();
   }
 

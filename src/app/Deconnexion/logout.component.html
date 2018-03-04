@@ -1,0 +1,10 @@
+
+<div *ngIf="isConnected()">
+<button class="btn btn-primary" (click)="deconnexion()">Voulez-vous vous déconnecter ?</button>
+<a href="home">Revenir au catalogue</a>
+</div>
+
+<div *ngIf="isNotConnected()">
+  <p>Vous n'etes pas connecté, voulez-vous vous connecter ?</p>
+<a href="connexion">Se connecter </a>
+</div>

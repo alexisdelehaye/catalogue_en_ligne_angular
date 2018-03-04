@@ -17,7 +17,7 @@ export class PanierComponent {
   public PrixTotal: number;
   listeProduit: Produit[];
   private prixArticleCourant: number;
-  public randomPage  = Math.round(Math.random());
+  public randomPage = Math.round(Math.random());
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {
     this.PrixTotal = 0;
@@ -37,16 +37,14 @@ export class PanierComponent {
 */
   }
 
-  public supprimerProduit(achat: Produit) {
-    const Catalogue = this.storage.get('Catalogue');
-    this.listeProduit = this.storage.get('PanierFinal');
-    this.listeProduit.splice(Catalogue.indexOf(achat));
-    this.storage.set('PanierFinal', this.listeProduit);
+  public supprimerProduit(i: number) {
     this.PrixTotal = this.storage.get('PrixTotal');
-    this.PrixTotal -= achat.prix;
+    this.listeProduit = this.storage.get('PanierFinal');
+    this.listeProduit.splice(i);
+    this.PrixTotal -= this.listeProduit[i].prix;
     this.storage.set('PrixTotal', this.PrixTotal);
-
-
+    this.storage.set('PanierFinal', this.listeProduit);
+  }
 }
 
 

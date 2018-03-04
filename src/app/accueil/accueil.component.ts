@@ -45,10 +45,6 @@ constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private a
     return this.authGuard.isConnected();
   }
 
-  logout() {
-    this.authService.logout();
-    window.location.reload();
-  }
 
   public sendData(model: Produit) {
     this.sortiePanier = this.storage.get('PanierFinal');

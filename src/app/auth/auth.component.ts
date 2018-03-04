@@ -27,4 +27,8 @@ export class AuthComponent {
   isNotConnected() {
     return !this.authGuard.isConnected();
   }
+
+  isConnected() {
+    return this.authGuard.isConnected();
+  }
 }

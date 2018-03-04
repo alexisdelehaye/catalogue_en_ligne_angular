@@ -23,6 +23,11 @@
     <li class="nav-item">
       <a class="nav-link" href="/connexion">Connexion</a>
     </li>
+    <div *ngIf="isConnected()">
+      <li class="nav-item">
+      <a class="nav-link" href="/Deconnexion  ">Déconnexion</a>
+      </li>
+    </div>
   </ul>
 </nav>
 <br/>

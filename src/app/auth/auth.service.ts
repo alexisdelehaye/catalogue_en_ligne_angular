@@ -26,8 +26,9 @@ export class AuthenticationService {
       }
     }
 
-    logout(){
+    logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('token');
+      this.router.navigate(['/home']);
     }
 }

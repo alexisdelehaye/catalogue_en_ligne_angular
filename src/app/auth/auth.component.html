@@ -7,3 +7,9 @@
     <input name="password" type="password" placeholder="Password" [(ngModel)]="model.password" />
     <button (click)="login()" class="btn btn-go">Go!</button>
   </div>
+
+  <div *ngIf="isConnected()">
+  Vous etes déja connecté , ou voulez vous allez maintenant ?
+    <a href="home">Revenir au catalogue</a>
+    <a href="panier">Accéder à votre panier </a>
+  </div>
