@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 })
 
 export class  AccueilComponent {
-  private sortiePanier: Produit[];
+  private sortiePanier: Produit[] = [];
   private indice = this.storage.set('indice', this.storage.get('indice'));
 
   public listeProduit: Produit[] = [

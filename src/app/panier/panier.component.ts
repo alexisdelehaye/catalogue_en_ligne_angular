@@ -14,15 +14,18 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 
 export class PanierComponent {
-  public PrixTotal = 0;
+  public PrixTotal: number;
   listeProduit: Produit[];
+  private prixArticleCourant: number;
   public randomPage  = Math.round(Math.random());
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {
+    this.PrixTotal = 0;
     this.storage.set('PrixTotal', this.PrixTotal);
     this.listeProduit = this.storage.get('PanierFinal');
     for (const produit of this.listeProduit) {
-      this.PrixTotal += produit.prix;
+      this.prixArticleCourant = produit.prix;
+      this.PrixTotal += this.prixArticleCourant;
     }
     this.storage.set('PrixTotal', this.PrixTotal);
     /*
@@ -33,6 +36,15 @@ export class PanierComponent {
     }
 */
   }
+
+  public supprimerProduit(achat: Produit) {
+    const Catalogue = this.storage.get('Catalogue');
+    this.listeProduit = this.storage.get('PanierFinal');
+    this.listeProduit.splice(Catalogue.indexOf(achat));
+    this.storage.set('PanierFinal', this.listeProduit);
+    this.PrixTotal = this.storage.get('PrixTotal');
+    this.PrixTotal -= achat.prix;
+    this.storage.set('PrixTotal', this.PrixTotal);
 
 
 }

@@ -4,6 +4,7 @@
       nom : {{achat.nom}}
       <span> description : {{achat.label}}</span>
       <span class="badge badge-primary badge-pill">{{achat.prix}} €</span>
+      <button class="btn btn-primary" (click)="supprimerProduit(achat)">retirer du panier</button>
     </li>
   </ul>
 
