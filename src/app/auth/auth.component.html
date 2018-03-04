@@ -1,0 +1,9 @@
+
+  <h2>{{ getHome() }}</h2>
+  <div *ngIf="isNotConnected()">
+    <label>Nom d'utilisateur</label>
+    <input name="username" type="text" placeholder="Username" [(ngModel)]="model.username" />
+    <label>Mot de passe</label>
+    <input name="password" type="password" placeholder="Password" [(ngModel)]="model.password" />
+    <button (click)="login()" class="btn btn-go">Go!</button>
+  </div>

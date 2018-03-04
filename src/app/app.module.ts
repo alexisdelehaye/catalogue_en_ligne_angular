@@ -12,6 +12,10 @@ import {PanierComponent} from './panier/panier.component';
 import { ProduitService } from './produit.service';
 import { PaiementSucessComponent} from './paiement/paiementSucess/paiementSucess.component';
 import {PaiementFailComponent} from './paiement/paiementFail/paiementFail.component';
+import {AuthComponent} from './auth/auth.component';
+import {AuthenticationService} from './auth/auth.service';
+import {AuthGuard} from './auth/auth-guard';
+import {FormsModule} from '@angular/forms';
 
 
  const routes: Routes = [
@@ -33,7 +37,12 @@ import {PaiementFailComponent} from './paiement/paiementFail/paiementFail.compon
      path : 'Commande/1',
      component : PaiementSucessComponent
    },
-  {path : 'home', component : AccueilComponent}
+  {path : 'home', component : AccueilComponent
+  },
+   {
+     path : 'connexion',
+     component : AuthComponent,
+   }
 ];
 
  const routing = RouterModule.forRoot(routes, {
@@ -46,10 +55,11 @@ import {PaiementFailComponent} from './paiement/paiementFail/paiementFail.compon
   imports:      [ BrowserModule , RouterModule,  routing, RouterModule.forRoot(
     routes,
     { enableTracing: true } // <-- debugging purposes only
-  ) , RouterModule.forChild(routes) , StorageServiceModule],
-  declarations: [ AppComponent, ProduitComponent, AccueilComponent, PanierComponent, PaiementFailComponent, PaiementSucessComponent],
+  ) , RouterModule.forChild(routes) , StorageServiceModule, FormsModule],
+  declarations: [ AppComponent, ProduitComponent, AccueilComponent, PanierComponent, PaiementFailComponent, PaiementSucessComponent, AuthComponent],
   bootstrap:    [ AppComponent],
-  providers: [{provide: APP_BASE_HREF, useValue : ''}, ProduitService ]
+  providers: [{provide: APP_BASE_HREF, useValue : ''}, ProduitService, AuthenticationService,
+    AuthGuard ]
 })
 export class AppModule {
 
