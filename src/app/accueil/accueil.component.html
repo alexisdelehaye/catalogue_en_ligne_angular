@@ -8,6 +8,7 @@
       <a  [routerLink]="['/produit',i]"  routerLinkActive="active">En savoir plus</a>
       <div *ngIf="isConnected()">
       <p><a [routerLink]="['/modifierProduit',i]" routerLinkActive="active">Modifier les caractéristique de ce produit</a></p>
+        <button class="btn btn-primary" (click)="supprimerProduit(i)">Supprimer ce produit du catalogue</button>
       </div>
       <button class="btn btn-primary" (click)="sendData(p)">Ajouter au panier</button>
     </div>

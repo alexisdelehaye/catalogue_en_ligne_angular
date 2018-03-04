@@ -30,17 +30,13 @@ export class ProduitComponent {
 
 
 
-  public listeProduit: Produit[] = [
-    new Produit('sacoche', 'sacoche en cuir', ' c\'est une sacoche en cuir cher !', 4000),
-    new Produit(' pantalon', 'pantalon noir ', ' c\'est un beau pantalon noir', 20),
-    new Produit('test', 'test', 'test', 1)
-  ];
+  public listeProduit: Produit[];
 
 
 
 
   constructor(private route: ActivatedRoute, @Inject(LOCAL_STORAGE) private storage: WebStorageService ) {
-
+  this.listeProduit = this.storage.get('Catalogue');
     let myId = '';
     this.route.params.subscribe(params => {
       myId = params['id'];

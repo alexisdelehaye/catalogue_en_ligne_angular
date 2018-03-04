@@ -4,6 +4,7 @@ import {Produit} from '../models/Produit';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {AuthenticationService} from '../auth/auth.service';
 import {AuthGuard} from '../auth/auth-guard';
+import {Router} from '@angular/router';
 
 @Component({
   selector : 'app-accueil',
@@ -14,10 +15,6 @@ import {AuthGuard} from '../auth/auth-guard';
 export class  AccueilComponent {
   private sortiePanier: Produit[];
   private indice = this.storage.set('indice', this.storage.get('indice'));
-
-  private PanierVide: Produit[] = [
-    new Produit('test', 'test', 'test', 1)
-  ];
 
   public listeProduit: Produit[] = [
     new Produit('sacoche', 'sacoche en cuir', ' c\'est une sacoche en cuir cher !', 4000),
@@ -32,14 +29,14 @@ export class  AccueilComponent {
     new Produit('produit de l\'accueil', 'test accueil', 'test', 25),
   ];
 constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private authService: AuthenticationService,
-            private authGuard: AuthGuard) {
+            private authGuard: AuthGuard, private router: Router) {
   if (this.storage.get('Catalogue') == null) {
     this.storage.set('Catalogue', this.listeProduit);
   }
   this.listeProduit = this.storage.get('Catalogue');
   this.indice = this.storage.get('indice');
   if ( this.storage.get('PanierFinal') == null) {
-    this.storage.set('PanierFinal', this.PanierVide);
+    this.storage.set('PanierFinal', this.sortiePanier);
   }
 
 }
@@ -57,6 +54,13 @@ constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private a
     this.sortiePanier = this.storage.get('PanierFinal');
     this.sortiePanier.push(model);
     this.storage.set('PanierFinal', this.sortiePanier);
+
+  }
+  public supprimerProduit(i: number) {
+    this.listeProduit = this.storage.get('Catalogue');
+    this.listeProduit.splice(i);
+    this.storage.set('Catalogue', this.listeProduit);
+    //this.router.navigate(['/home']);
 
   }
 }
