@@ -17,6 +17,7 @@ import {AuthenticationService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth-guard';
 import {FormsModule} from '@angular/forms';
 import {AjoutProduitComponent} from './AjoutProduit/AjoutProduit.component';
+import {ModifierProduitComponent} from './ModifierProduit/modifierProduit.component';
 
 
  const routes: Routes = [
@@ -47,6 +48,10 @@ import {AjoutProduitComponent} from './AjoutProduit/AjoutProduit.component';
    {
      path : 'CreationProduit',
      component : AjoutProduitComponent,
+   },
+   {
+     path : 'modifierProduit/:id',
+     component : ModifierProduitComponent,
    }
 ];
 
@@ -61,7 +66,7 @@ import {AjoutProduitComponent} from './AjoutProduit/AjoutProduit.component';
     routes,
     { enableTracing: true } // <-- debugging purposes only
   ) , RouterModule.forChild(routes) , StorageServiceModule, FormsModule],
-  declarations: [ AppComponent, ProduitComponent, AccueilComponent, PanierComponent, PaiementFailComponent, PaiementSucessComponent, AuthComponent, AjoutProduitComponent],
+  declarations: [ AppComponent, ProduitComponent, AccueilComponent, PanierComponent, PaiementFailComponent, PaiementSucessComponent, AuthComponent, AjoutProduitComponent, ModifierProduitComponent],
   bootstrap:    [ AppComponent],
   providers: [{provide: APP_BASE_HREF, useValue : ''}, ProduitService, AuthenticationService,
     AuthGuard ]

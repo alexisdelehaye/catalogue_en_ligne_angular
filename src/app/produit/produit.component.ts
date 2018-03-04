@@ -5,7 +5,6 @@ import {NgModule} from '@angular/core';
 import {Produit} from '../models/Produit';
 import {Panier} from '../models/Panier';
 import {PanierComponent} from '../panier/panier.component';
-import {ProduitService} from '../produit.service';
 import {AccueilComponent} from '../accueil/accueil.component';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
@@ -13,7 +12,6 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
   selector : 'app-produit',
   templateUrl : './produit.component.html',
   styleUrls: [ './produit.component.css' ],
-  providers : [ProduitService, ]
 })
 
 @NgModule({
