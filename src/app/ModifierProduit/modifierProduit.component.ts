@@ -1,6 +1,6 @@
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {Component, Inject} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Produit} from '../models/Produit';
 
 @Component({
@@ -16,7 +16,7 @@ export class ModifierProduitComponent {
   private CatalogueCourant: Produit[];
   private indiceProd;
 
-  constructor(private route: ActivatedRoute, @Inject(LOCAL_STORAGE) private storage: WebStorageService) {
+  constructor(private route: ActivatedRoute, @Inject(LOCAL_STORAGE) private storage: WebStorageService,  private router: Router) {
     this.CatalogueCourant = this.storage.get('Catalogue');
     let myId = '';
     this.route.params.subscribe(params => {
@@ -31,6 +31,7 @@ export class ModifierProduitComponent {
     this.CatalogueCourant = this.storage.get('Catalogue');
     this.CatalogueCourant[this.indiceProd] = this.ProduitCourant;
     this.storage.set('Catalogue', this.CatalogueCourant);
+    this.router.navigate(['/home']);
   }
 }
 

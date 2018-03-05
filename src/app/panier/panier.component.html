@@ -9,6 +9,13 @@
   </ul>
 
 <div class="alert alert-primary" role="alert">
-  Prix total de votre Panier  {{PrixTotal}} € <a [routerLink]="['/Commande',randomPage]" >Effectuer votre commande </a>
+  Prix total de votre Panier : {{PrixTotal}} €
+  <div *ngIf="pasVide()">
+    <a [routerLink]="['/Commande',randomPage]" >Effectuer votre commande </a>
 </div>
-
+ </div>
+ <div *ngIf="estVide()">
+   <br/>
+   <p>Votre panier est actuellement vide </p>
+   <a href="/home"> revenir au catalogue</a>
+ </div>

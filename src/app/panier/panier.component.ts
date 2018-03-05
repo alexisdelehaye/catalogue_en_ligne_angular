@@ -12,7 +12,8 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 
 export class PanierComponent {
-  private PrixTotal: number;
+  public PrixTotal: number;
+  public panierVide = true;
   listeProduit: Produit[];
   private prixArticleCourant: number;
   public randomPage = Math.round(Math.random());
@@ -26,12 +27,16 @@ export class PanierComponent {
     this.listeProduit = this.storage.get('PanierFinal');
     if (this.PrixTotal == null) {
       this.PrixTotal = 0;
+      this.panierVide = true;
     }
     for (const produit of this.listeProduit) {
       this.prixArticleCourant = produit.prix;
       this.PrixTotal += this.prixArticleCourant;
     }
     this.storage.set('PrixTotal', this.PrixTotal);
+    if (this.PrixTotal != 0) {
+      this.panierVide = false;
+    }
   }
 
   public supprimerProduit(i: number, achat: Produit) {
@@ -42,6 +47,7 @@ export class PanierComponent {
       this.storage.set('PanierFinal', this.listeProduit);
       this.PrixTotal = this.PrixTotal - achat.prix;
       this.storage.set('PrixTotal', this.PrixTotal);
+      this.panierVide = true;
     } else {
       this.listeProduit.splice(i, 1);
       this.PrixTotal = this.PrixTotal - achat.prix;
@@ -49,7 +55,15 @@ export class PanierComponent {
       this.storage.set('PanierFinal', this.listeProduit);
     }
   }
-}
+
+      estVide() {
+        return this.panierVide === true;
+      }
+     pasVide() {
+      return this.panierVide === false;
+    }
+  }
+
 
 
 
