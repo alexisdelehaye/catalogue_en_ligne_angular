@@ -43,7 +43,7 @@ export class PanierComponent {
       this.PrixTotal = this.PrixTotal - achat.prix;
       this.storage.set('PrixTotal', this.PrixTotal);
     } else {
-      this.listeProduit.splice(i);
+      this.listeProduit.splice(i, 1);
       this.PrixTotal = this.PrixTotal - achat.prix;
       this.storage.set('PrixTotal', this.PrixTotal);
       this.storage.set('PanierFinal', this.listeProduit);

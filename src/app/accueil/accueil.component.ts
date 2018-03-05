@@ -53,15 +53,15 @@ constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private a
 
   }
   public supprimerProduit(i: number) {
-  if (i == 0) {
-    this.listeProduit.shift();
-    this.storage.set('Catalogue', this.listeProduit);
-    this.router.navigateByUrl('/home');
-  } else {
-    this.listeProduit = this.storage.get('Catalogue');
-    this.listeProduit.slice(i);
-    this.storage.set('Catalogue', this.listeProduit);
-    this.router.navigate(['/home']);
-  }
+    if (i != 0) {
+      this.listeProduit = this.storage.get('Catalogue');
+      this.listeProduit.splice(i, 1);
+      this.storage.set('Catalogue', this.listeProduit);
+      this.router.navigate(['/home']);
+    } else {
+      this.listeProduit.shift();
+      this.storage.set('Catalogue', this.listeProduit);
+      this.router.navigateByUrl('/home');
+    }
   }
 }
