@@ -4,7 +4,6 @@ import {Produit} from '../models/Produit';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 
-
 @Component({
   selector: 'app-panier',
   templateUrl: './panier.component.html',
@@ -12,9 +11,8 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 })
 
 
-
 export class PanierComponent {
-  private PrixTotal : number;
+  private PrixTotal: number;
   listeProduit: Produit[];
   private prixArticleCourant: number;
   public randomPage = Math.round(Math.random());
@@ -39,10 +37,17 @@ export class PanierComponent {
   public supprimerProduit(i: number, achat: Produit) {
     this.PrixTotal = this.storage.get('PrixTotal');
     this.listeProduit = this.storage.get('PanierFinal');
-    this.listeProduit.splice(i);
-    this.PrixTotal = this.PrixTotal - achat.prix;
-    this.storage.set('PrixTotal', this.PrixTotal);
-    this.storage.set('PanierFinal', this.listeProduit);
+    if (i == 0) {
+      this.listeProduit.shift();
+      this.storage.set('PanierFinal', this.listeProduit);
+      this.PrixTotal = this.PrixTotal - achat.prix;
+      this.storage.set('PrixTotal', this.PrixTotal);
+    } else {
+      this.listeProduit.splice(i);
+      this.PrixTotal = this.PrixTotal - achat.prix;
+      this.storage.set('PrixTotal', this.PrixTotal);
+      this.storage.set('PanierFinal', this.listeProduit);
+    }
   }
 }
 
