@@ -36,26 +36,18 @@ export class ProduitComponent {
 
 
   constructor(private route: ActivatedRoute, @Inject(LOCAL_STORAGE) private storage: WebStorageService ) {
-  this.listeProduit = this.storage.get('Catalogue');
+  this.listeProduit = this.storage.get('Catalogue'); //recupération du catalogue courant pour récupérer le produit à afficher
     let myId = '';
     this.route.params.subscribe(params => {
-      myId = params['id'];
+      myId = params['id']; //récupération de l'indice du produit envoyé par l'url
     });
 
-    this.model = this.listeProduit[myId];
+    this.model = this.listeProduit[myId]; //on définit le modèle avec l'indice du tableau du catalogue
     this.indexModel =  myId;
   }
 
-  public sendData(model: Produit) {
-    /*
-    this.indice = this.storage.get('indice');
-    while (this.storage.get(this.indice.toString()) != null) {
-      this.indice++;
-    }
-    this.sortiePanier.push(model);
-    this.storage.set(this.indice.toString(), model);
-    this.storage.set('indice', this.indice);
-    */
+  public sendData(model: Produit) { //ajoute le produit courant affiché sur la page dans le panier stocké sur le localStorage
+
     this.sortiePanier = this.storage.get('PanierFinal');
     this.sortiePanier.push(model);
     this.storage.set('PanierFinal', this.sortiePanier);

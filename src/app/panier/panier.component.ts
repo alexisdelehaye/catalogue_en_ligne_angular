@@ -39,7 +39,7 @@ export class PanierComponent {
     }
   }
 
-  public supprimerProduit(i: number, achat: Produit) {
+  public supprimerProduit(i: number, achat: Produit) { //suppresion du produit du panier avec son indice
     this.PrixTotal = this.storage.get('PrixTotal');
     this.listeProduit = this.storage.get('PanierFinal');
     if (i == 0) {
@@ -56,10 +56,10 @@ export class PanierComponent {
     }
   }
 
-      estVide() {
+      estVide()  {//vérifie si le panier est vide
         return this.panierVide === true;
       }
-     pasVide() {
+     pasVide() { //vérifie si le panier n'est pas vide
       return this.panierVide === false;
     }
   }

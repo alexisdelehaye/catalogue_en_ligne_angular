@@ -5,7 +5,7 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import {AuthenticationService} from '../auth/auth.service';
 import {AuthGuard} from '../auth/auth-guard';
 import {Router} from '@angular/router';
-import {nextTick} from 'q';
+
 
 @Component({
   selector : 'app-accueil',
@@ -61,14 +61,14 @@ export class  AccueilComponent {
   }
 
 
-  public sendData(model: Produit) {
+  public sendData(model: Produit) {//ajoute le produit au panier
     this.sortiePanier = this.storage.get('PanierFinal');
     this.sortiePanier.push(model);
     this.storage.set('PanierFinal', this.sortiePanier);
 
   }
 
-  public supprimerProduit(i: number) {
+  public supprimerProduit(i: number) {//supprime le produit du catalogue
     if (i != 0) {
       this._listeProduit = this.storage.get('Catalogue');
       this._listeProduit.splice(i, 1);

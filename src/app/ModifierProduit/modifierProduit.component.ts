@@ -27,7 +27,7 @@ export class ModifierProduitComponent {
     this.indiceProd = myId;
   }
 
-  ModifierProduit() {
+  ModifierProduit() { //modifie le produit récupérer par l'indice envoyé avec un router-link
     this.CatalogueCourant = this.storage.get('Catalogue');
     this.CatalogueCourant[this.indiceProd] = this.ProduitCourant;
     this.storage.set('Catalogue', this.CatalogueCourant);

@@ -16,7 +16,7 @@ export class AjoutProduitComponent {
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {}
 
-  ajouterProduit() {
+  ajouterProduit() {//ajoute le produit dans le tableau du catalogue stocké sur le localStorage
     this.CatalogueCourant = this.storage.get('Catalogue');
     this.CatalogueCourant.push(this.NouveauProduit);
     this.storage.set('Catalogue', this.CatalogueCourant);

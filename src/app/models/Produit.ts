@@ -1,12 +1,3 @@
-/*let Produit = function () {
-    this.nom = "";
-    this.label ="";
-    this.description ="";
-    this.prix = Math.floor(Math.random() * 10);
-
-
-};
-*/
 
 
 export class Produit {
