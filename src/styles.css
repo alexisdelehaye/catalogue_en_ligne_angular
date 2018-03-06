@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+background-image:url("image/fond.jpg");
+}
+
+nav{
+background-image:url("image/fond_bar.jpg");
+box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+svg:not(:root).svg-inline--fa{
+margin-right:5px;
+}
+
+nav a{
+color:inherit;
+text-decoration: inherit;
+}
+
+nav a:hover{
+color:inherit;
+font-weight:normal;
+}
+
+a{
+color:black;
+text-decoration: underline;
+}
+
+a:hover{
+color:black;
+font-weight: bold;
+}
+
+span{
+	color:white;
+}
+
+@media (max-width: 660px) {
+#logo{
+display:none;
+}
+}
+
+
+@media (max-width: 573px) {
+#corps{
+margin-top:120px;
+}
+
+.navbar-expand-sm .navbar-nav{
+display:block;
+text-align:center;
+margin:0 auto;
+width:100%;
+}
+
+.fixed-top{
+text-align:center;
+}
+}

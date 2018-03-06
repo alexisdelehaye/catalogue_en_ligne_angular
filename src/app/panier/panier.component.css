@@ -1,0 +1,16 @@
+.badge-primary{
+background-color:black;
+}
+
+.btn:not(:disabled):not(.disabled){
+background-color:black;
+border-color:black;
+}
+
+p{
+margin:0px;
+}
+
+#desc{
+  color: black;
+}

@@ -2,37 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" type="text/css" rel="stylesheet" >
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="../angular-local-storage.min.js">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   <title>Page d'accueil</title>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-sm bg-info navbar-dark fixed-top">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Catalogue La Redoute</a>
-
+  <a id="logo" class="navbar-brand" href="#">Catalogue La Redoute</a>
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="/home">Acceuil</a>
+      <a class="nav-link" href="/home"><i class="fas fa-home"></i>Acceuil</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/panier">Panier</a>
+      <a class="nav-link" href="/panier"><i class="fas fa-shopping-cart"></i>Panier</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/connexion">Connexion</a>
+      <a class="nav-link" href="/connexion"><i class="fas fa-user"></i>Connexion</a>
     </li>
     <div *ngIf="isConnected()">
       <li class="nav-item">
-      <a class="nav-link" href="/Deconnexion  ">Déconnexion</a>
+      <a class="nav-link" href="/Deconnexion  "><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
       </li>
     </div>
   </ul>
 </nav>
-<br/>
 <br>
+<br>
+<div id="corps">
 <app-root> </app-root>
+</div>
 </body>
 </html>
 

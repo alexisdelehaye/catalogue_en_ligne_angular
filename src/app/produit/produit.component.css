@@ -1,0 +1,21 @@
+.card{
+margin:0 auto;
+width:200px;
+box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.card-body{
+text-align:center;
+}
+
+.btn:not(:disabled):not(.disabled){
+background-color:black;
+border-color:black;
+}
+
+@media (max-width: 650px) {
+.card{
+margin:0 auto;
+width:100%;
+}
+}

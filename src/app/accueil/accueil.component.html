@@ -1,24 +1,22 @@
-<ul class="list-unstyled">
-  <li class="media" *ngFor="let p of listeProduit; let i=index">
-    <img class="mr-3" src="http://lorempixel.com/100/100/" alt="Generic placeholder image">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">{{p.nom}}</h5>
-      <div>{{p.label}}</div>
-      <p>Pour le prix de {{p.prix}} €</p>
-      <a  [routerLink]="['/produit',i]"  routerLinkActive="active">En savoir plus</a>
-      <div *ngIf="isConnected()">
-      <p><a [routerLink]="['/modifierProduit',i]" routerLinkActive="active">Modifier les caractéristique de ce produit</a></p>
-        <button class="btn btn-primary" (click)="supprimerProduit(i)">Supprimer ce produit du catalogue</button>
-      </div>
-      <button class="btn btn-primary" (click)="sendData(p)">Ajouter au panier</button>
-    </div>
-  </li>
-
-</ul>
-
 <div *ngIf="isConnected()">
-<p>Vous etez connecté</p>
-  <a href="CreationProduit">Ajouter un nouveau produit au catalogue</a>
 
+<div class="alert alert-info">
+  <strong>Info ! </strong>Vous êtes connecté. <a href="CreationProduit"> Ajouter un produit au catalogue.</a> 
+</div>
+</div>
+
+<div id="corps_accueil">
+<div class="card" *ngFor="let p of listeProduit; let i=index" style="width: 18rem;" xmlns=""><img class="card-img-top" src="http://lorempixel.com/250/250/" alt="Card image cap">
+  <div class="card-body"><h5 class="card-title">{{p.nom}}</h5>
+    <p class="card-text"><b>Description</b> : {{p.label}}</p>
+	<p class="card-text"><b>Prix</b> : {{p.prix}} €</p>
+    <div *ngIf="isConnected()">
+	<a [routerLink]="['/produit',i]"  routerLinkActive="active">En savoir plus</a>
+      <p><a [routerLink]="['/modifierProduit',i]" routerLinkActive="active">Modifier ce produit</a></p>
+        <button class="btn btn-primary" (click)="supprimerProduit(i)"><i class="fas fa-trash-alt"></i>Supprimer le produit</button>
+      </div>
+      <button class="btn btn-primary" (click)="sendData(p)"><i class="fas fa-cart-plus"></i>Ajouter au panier</button>
+  </div>
+</div>
 </div>
 

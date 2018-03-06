@@ -1,17 +1,19 @@
-<label>Nom du produit du catalogue à modifier</label>
+<div id="corps_modif">
+<label>Nom : </label>
 <br/>
 <input name="nom" type="text" placeholder="{{ProduitCourant.nom}}" value="{{ProduitCourant.nom}}" [(ngModel)]="ProduitCourant.nom" />
 <br/>
-<label>Label du  produit du catalogue à modifier</label>
+<label>Label : </label>
 <br/>
 <input name="label" type="text" placeholder="{{ProduitCourant.label}}" value="{{ProduitCourant.label}}" [(ngModel)]="ProduitCourant.label" />
 <br/>
-<label>Description du  produit du catalogue à modifier</label>
+<label>Description : </label>
 <br/>
 <input name="description" type="text" placeholder="{{ProduitCourant.description}}" value="{{ProduitCourant.description}}" [(ngModel)]="ProduitCourant.description" />
 <br/>
-<label>Prix du  produit du catalogue à modifier</label>
+<label>Prix : </label>
 <br/>
 <input name="Prix" type="number" placeholder="{{ProduitCourant.prix}}" value="{{ProduitCourant.prix}}" [(ngModel)]="ProduitCourant.prix" />
 <br/>
-<button (click)="ModifierProduit()" class="btn btn-go">Modifier ce produit du catalogue</button>
+<button (click)="ModifierProduit()" class="btn btn-go">Modifier le produit du catalogue</button>
+</div>

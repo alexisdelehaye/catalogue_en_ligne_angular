@@ -1,17 +1,13 @@
-<label>Nom du nouveau produit à ajouter au catalogue</label>
-<br/>
-<input name="nom" type="text" placeholder="nom du nouveau produit" [(ngModel)]="NouveauProduit.nom" />
-<br/>
-<label>Label du nouveau produit</label>
-<br/>
-<input name="label" type="labelProduit" placeholder="label du nouveau produit" [(ngModel)]="NouveauProduit.label" />
-<br/>
-<label>Description du nouveau produit</label>
-<br/>
-<input name="description" type="DescriptionProduit" placeholder="description du nouveau produit" [(ngModel)]="NouveauProduit.description" />
-<br/>
-<label>Prix du nouveau produit</label>
-<br/>
-<input name="Prix" type="number" placeholder="Prix du nouveau produit" [(ngModel)]="NouveauProduit.prix" />
-<br/>
-<button (click)="ajouterProduit()" class="btn btn-go">Ajouter le nouveau produit au catalogue</button>
+<div id="corps_ajout">
+<h2>Ajout d'un produit au catalogue</h2>
+
+<label>Nom : </label>
+<input name="nom" type="text" placeholder="Ajouter le nom..." [(ngModel)]="NouveauProduit.nom" />
+<label>Label : </label>
+<input name="label" type="labelProduit" placeholder="Ajouter le label..." [(ngModel)]="NouveauProduit.label" />
+<label>Description : </label>
+<input name="description" type="DescriptionProduit" placeholder="Ajouter la description..." [(ngModel)]="NouveauProduit.description" />
+<label>Prix : </label><br/>
+<input name="Prix" type="number" placeholder="Ajouter le prix..." [(ngModel)]="NouveauProduit.prix" />
+<button (click)="ajouterProduit()" class="btn btn-go">Ajouter le produit au catalogue</button>
+</div>

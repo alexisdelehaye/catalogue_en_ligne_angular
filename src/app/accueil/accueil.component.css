@@ -1,0 +1,43 @@
+#corps_accueil{
+margin:0 auto;
+width:90%;
+height:100%;
+text-align:center;
+}
+
+svg:not(:root).svg-inline--fa{
+margin-right:5px;
+}
+
+button{
+margin-bottom:5px;
+}
+
+.card{
+width:200px;
+box-shadow: 0 0 20px rgba(0,0,0,0.6);
+display:inline-block;
+margin:10px;
+}
+
+.card-body{
+text-align:center;
+margin:0;
+padding:0;
+}
+
+.card-body h5 , .card-body p{
+margin:0;
+}
+
+.btn:not(:disabled):not(.disabled){
+background-color:black;
+border-color:black;
+}
+
+@media (max-width: 650px) {
+.card{
+margin:10px auto;
+width:100%;
+}
+}

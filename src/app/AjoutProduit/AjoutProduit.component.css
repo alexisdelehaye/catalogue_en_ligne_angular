@@ -1,0 +1,44 @@
+#corps_ajout{
+	margin:0 auto;
+	width:50%;
+	border:2px solid black;
+	background-color:white;
+	padding:10px;
+	box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+h2{
+text-align:center;
+}
+
+input{
+width:100%;
+border:1px solid grey;
+margin-bottom:5px;
+}
+
+input:focus{
+background-color:rgba(0,0,0,0.13);
+outline-style:none;
+box-shadow:none;
+border:1px solid grey;
+}
+
+
+label{
+font-weight: bold;
+}
+
+.btn:not(:disabled):not(.disabled){
+width:100%;
+background-image:url("image/fond_bar.jpg");
+color:white
+}
+
+
+@media (max-width: 660px) {
+#corps_ajout{
+	margin:0 auto;
+	width:80%;
+}
+}
