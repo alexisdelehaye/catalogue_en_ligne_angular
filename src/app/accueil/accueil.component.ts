@@ -21,11 +21,14 @@ export class  AccueilComponent {
   set listeProduit(value: Produit[]) {
     this._listeProduit = value;
   }
+
   private sortiePanier: Produit[] = [];
   private indice = this.storage.set('indice', this.storage.get('indice'));
 
+  public listeProduitPar10: Produit[];
+
   private _listeProduit: Produit[] = [
-    new Produit('Cervicibus inquam', 'Cervicibus inquam refertissimam Mithridaticos inquam.', 'Exustus Luscus eosque heiulans audaces haut haut vocibus exustus expediendum.', Math.floor(Math.random() * 500) ),
+    new Produit('Cervicibus inquam', 'Cervicibus inquam refertissimam Mithridaticos inquam.', 'Exustus Luscus eosque heiulans audaces haut haut vocibus exustus expediendum.', Math.floor(Math.random() * 500)),
     new Produit('Vel solo', 'Vel solo aut partes enim', 'Distributo cogitabatur locata tuto in et opera consulta ne insidiarum.', Math.floor(Math.random() * 500)),
     new Produit('Romae innumeram ', 'Romae innumeram haec pendentem videre.', 'Profecto saepe et domi incidere in in ut hominum odio.', Math.floor(Math.random() * 500)),
     new Produit('Postulatus', 'Inter postulatus nullo', 'Cum ergo Romae', Math.floor(Math.random() * 500)),
@@ -39,19 +42,19 @@ export class  AccueilComponent {
 
   ];
 
-constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private authService: AuthenticationService,
-            private authGuard: AuthGuard, private router: Router) {
-  this.storage.set('Catalogue', this._listeProduit);
-  if (this.storage.get('Catalogue')[0] == null) {
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private authService: AuthenticationService,
+              private authGuard: AuthGuard, private router: Router) {
     this.storage.set('Catalogue', this._listeProduit);
-  }
-  this._listeProduit = this.storage.get('Catalogue');
-  this.indice = this.storage.get('indice');
-  if ( this.storage.get('PanierFinal') == null) {
-    this.storage.set('PanierFinal', this.sortiePanier);
+    if (this.storage.get('Catalogue')[0] == null) {
+      this.storage.set('Catalogue', this._listeProduit);
+    }
+    this._listeProduit = this.storage.get('Catalogue');
+    this.indice = this.storage.get('indice');
+    if (this.storage.get('PanierFinal') == null) {
+      this.storage.set('PanierFinal', this.sortiePanier);
+    }
   }
 
-}
 
   isConnected() {
     return this.authGuard.isConnected();
@@ -64,6 +67,7 @@ constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private a
     this.storage.set('PanierFinal', this.sortiePanier);
 
   }
+
   public supprimerProduit(i: number) {
     if (i != 0) {
       this._listeProduit = this.storage.get('Catalogue');

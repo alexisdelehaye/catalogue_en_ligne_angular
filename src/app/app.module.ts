@@ -57,7 +57,7 @@ import {LogoutComponent} from './Deconnexion/logout.component';
    {
      path : 'Deconnexion',
      component : LogoutComponent,
-   }
+   },
 ];
 
  const routing = RouterModule.forRoot(routes, {
