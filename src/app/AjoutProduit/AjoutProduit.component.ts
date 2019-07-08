@@ -4,17 +4,18 @@ import {Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector : 'app-nouveauproduit',
+  selector: 'app-nouveauproduit',
   templateUrl: './AjoutProduit.component.html',
-  styleUrls: [ './AjoutProduit.component.css' ]
+  styleUrls: ['./AjoutProduit.component.css']
 })
 
 
 export class AjoutProduitComponent {
-    public NouveauProduit: Produit = new Produit('', '', '', 0);
-    private CatalogueCourant: Produit[];
+  public NouveauProduit: Produit = new Produit('', '', '', 0);
+  private CatalogueCourant: Produit[];
 
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {}
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {
+  }
 
   ajouterProduit() {//ajoute le produit dans le tableau du catalogue stocké sur le localStorage
     this.CatalogueCourant = this.storage.get('Catalogue');

@@ -4,9 +4,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Produit} from '../models/Produit';
 
 @Component({
-  selector : 'app-modifierproduit',
+  selector: 'app-modifierproduit',
   templateUrl: './modifierProduit.component.html',
-  styleUrls: [ './modifierProduit.component.css' ]
+  styleUrls: ['./modifierProduit.component.css']
 })
 
 
@@ -16,7 +16,7 @@ export class ModifierProduitComponent {
   private CatalogueCourant: Produit[];
   private indiceProd;
 
-  constructor(private route: ActivatedRoute, @Inject(LOCAL_STORAGE) private storage: WebStorageService,  private router: Router) {
+  constructor(private route: ActivatedRoute, @Inject(LOCAL_STORAGE) private storage: WebStorageService, private router: Router) {
     this.CatalogueCourant = this.storage.get('Catalogue');
     let myId = '';
     this.route.params.subscribe(params => {

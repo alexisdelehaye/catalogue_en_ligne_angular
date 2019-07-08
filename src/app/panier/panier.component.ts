@@ -56,13 +56,14 @@ export class PanierComponent {
     }
   }
 
-      estVide()  {//vérifie si le panier est vide
-        return this.panierVide === true;
-      }
-     pasVide() { //vérifie si le panier n'est pas vide
-      return this.panierVide === false;
-    }
+  estVide() {//vérifie si le panier est vide
+    return this.panierVide === true;
   }
+
+  pasVide() { //vérifie si le panier n'est pas vide
+    return this.panierVide === false;
+  }
+}
 
 
 

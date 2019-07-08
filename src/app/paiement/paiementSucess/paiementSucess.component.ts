@@ -9,7 +9,6 @@ import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 })
 
 
-
 export class PaiementSucessComponent {
   public PrixTotal = 0;
 
@@ -19,12 +18,12 @@ export class PaiementSucessComponent {
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) {
     this.PrixTotal = this.storage.get('PrixTotal');
-    for ( let i = 0; i < 5; i++)  {
+    for (let i = 0; i < 5; i++) {
       const n = Math.floor(Math.random() * 26) + 1;
       this.identifiantTransaction.push(this._Alphabet[n]);
     }
 
-    for ( let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
       const n = Math.floor(Math.random() * 9) + 1;
       this.identifiantTransaction.push(n.toString());
     }

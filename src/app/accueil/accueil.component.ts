@@ -1,4 +1,3 @@
-
 import {Component, Inject} from '@angular/core';
 import {Produit} from '../models/Produit';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
@@ -8,12 +7,12 @@ import {Router} from '@angular/router';
 
 
 @Component({
-  selector : 'app-accueil',
+  selector: 'app-accueil',
   templateUrl: './accueil.component.html',
-  styleUrls: [ './accueil.component.css' ]
+  styleUrls: ['./accueil.component.css']
 })
 
-export class  AccueilComponent {
+export class AccueilComponent {
   get listeProduit(): Produit[] {
     return this._listeProduit;
   }

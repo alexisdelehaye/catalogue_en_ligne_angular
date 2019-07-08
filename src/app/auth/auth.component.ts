@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthenticationService} from './auth.service';
 import {Router} from '@angular/router';
 import {Users} from '../models/Users';
 import {AuthGuard} from './auth-guard';
 
 @Component({
-  selector : 'app-auth',
+  selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: [ './auth.component.css' ]
+  styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
   public model: Users = {username: '', password: ''};
